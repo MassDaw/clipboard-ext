@@ -1,0 +1,325 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0 10px 10px 10px;
+  background: #f8fafc;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 1.2em;
+  margin: 12px 0 8px 0;
+  text-align: center;
+  color: #2563eb;
+}
+
+#recortes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recorte {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  margin-bottom: 10px;
+  padding: 10px;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recorte .texto {
+  font-weight: 500;
+  color: #222;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: max-height 0.2s;
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+.recorte .texto.expandido {
+  display: block;
+  -webkit-line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.recorte .nota {
+  font-size: 0.95em;
+  color: #475569;
+}
+
+.recorte .meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85em;
+  margin-top: 2px;
+}
+
+.recorte .meta a {
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.recorte .meta .fecha {
+  color: #64748b;
+}
+
+.recorte .meta .eliminar {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-left: auto;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.recorte .meta .eliminar:hover {
+  background: #fee2e2;
+}
+
+#sin-recortes {
+  text-align: center;
+  color: #64748b;
+  margin-top: 20px;
+}
+
+#donacion-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 2px;
+}
+
+#donacion-btn {
+  background: #fffbe7;
+  color: #b68900;
+  border: 1px solid #ffe4a3;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: background 0.2s, border 0.2s;
+  outline: none;
+}
+#donacion-btn:hover, #donacion-btn:focus {
+  background: #fff3c4;
+  border-color: #ffd36b;
+} 
+#popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+#total-recortes {
+  font-size: 1em;
+  color: #475569;
+}
+#theme-toggle-container {
+  margin-left: 8px;
+}
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 50%;
+  padding: 4px 8px;
+  transition: background 0.2s;
+}
+#theme-toggle:hover, #theme-toggle:focus {
+  background: #e0e7ef;
+}
+#buscador-recortes {
+  width: 100%;
+  padding: 7px 10px;
+  margin-bottom: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 1em;
+  outline: none;
+  box-sizing: border-box;
+  background: #fff;
+  color: #222;
+}
+#buscador-recortes:focus {
+  border-color: #2563eb;
+}
+#filtros-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#filtro-etiqueta {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 1em;
+  background: #fff;
+  color: #222;
+}
+#exportar-md {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+#exportar-md:hover, #exportar-md:focus {
+  background: #bae6fd;
+  border-color: #7dd3fc;
+}
+#exportar-pdf {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+#exportar-pdf:hover, #exportar-pdf:focus {
+  background: #bae6fd;
+  border-color: #7dd3fc;
+}
+.badge-etiqueta {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #2563eb;
+  border-radius: 4px;
+  font-size: 0.85em;
+  padding: 2px 8px;
+  margin-left: 4px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+}
+.btn-copiar {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-left: 6px;
+  border-radius: 3px;
+  padding: 2px 6px;
+  transition: background 0.2s;
+}
+.btn-copiar:hover, .btn-copiar:focus {
+  background: #e0e7ef;
+}
+.copiado-msg {
+  color: #22c55e;
+  font-size: 0.9em;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+#donacion-humano {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+  padding: 10px 0 2px 0;
+  border-top: 1px solid #e5e7eb;
+  color: #475569;
+  font-size: 1em;
+  gap: 6px;
+}
+#donacion-btn-final {
+  background: #fffbe7;
+  color: #b68900;
+  border: 1px solid #ffe4a3;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: background 0.2s, border 0.2s;
+  outline: none;
+}
+#donacion-btn-final:hover, #donacion-btn-final:focus {
+  background: #fff3c4;
+  border-color: #ffd36b;
+}
+/* Modo oscuro */
+.dark-mode,
+.dark-mode body {
+  background: #18181b;
+  color: #fff !important;
+}
+.dark-mode #recortes-list {
+  background: #18181b;
+}
+.dark-mode .recorte {
+  background: #23232a;
+  color: #fff !important;
+}
+.dark-mode #buscador-recortes,
+.dark-mode #filtro-etiqueta {
+  background: #23232a;
+  color: #fff !important;
+  border-color: #27272a;
+}
+.dark-mode #exportar-md {
+  background: #23232a;
+  color: #fbbf24;
+  border-color: #44403c;
+}
+.dark-mode #exportar-md:hover, .dark-mode #exportar-md:focus {
+  background: #27272a;
+  border-color: #fbbf24;
+}
+.dark-mode #exportar-pdf {
+  background: #23232a;
+  color: #fbbf24;
+  border-color: #44403c;
+}
+.dark-mode #exportar-pdf:hover, .dark-mode #exportar-pdf:focus {
+  background: #27272a;
+  border-color: #fbbf24;
+}
+.dark-mode #donacion-humano {
+  border-top: 1px solid #27272a;
+  color: #fbbf24;
+}
+.dark-mode #donacion-btn-final {
+  background: #23232a;
+  color: #fbbf24;
+  border-color: #44403c;
+}
+.dark-mode #donacion-btn-final:hover, .dark-mode #donacion-btn-final:focus {
+  background: #27272a;
+  border-color: #fbbf24;
+}
+.dark-mode .badge-etiqueta {
+  background: #27272a;
+  color: #fbbf24;
+}
+.dark-mode #theme-toggle {
+  color: #fbbf24;
+  background: #23232a;
+} 
