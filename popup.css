@@ -323,3 +323,28 @@ h1 {
   color: #fbbf24;
   background: #23232a;
 } 
+#theme-lang-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#lang-select {
+  font-size: 1.2em;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  padding: 2px 6px;
+  cursor: pointer;
+  outline: none;
+  height: 2.1em;
+  min-width: 2.5em;
+}
+#lang-select:focus {
+  border-color: #2563eb;
+}
+.dark-mode #lang-select {
+  background: #23232a;
+  color: #fff;
+  border-color: #27272a;
+} 

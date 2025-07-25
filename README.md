@@ -34,8 +34,10 @@ Extensión de Chrome para guardar recortes de texto seleccionados en cualquier p
 
 ## Créditos
 
-Desarrollado por Maxim y colaboradores.
+Desarrollado por Max.
 
 ---
+
+[![Invítame un café](https://img.shields.io/badge/Inv%C3%ADtame%20un%20caf%C3%A9-%F0%9F%8D%94-yellow?style=for-the-badge)](https://coff.ee/freeextensions)
 
 ¿Te ha sido útil esta extensión? ¡Invítame un café! ☕ 
