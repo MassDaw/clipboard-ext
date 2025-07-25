@@ -1,6 +1,6 @@
 # Recortes con Notas
 
-Extensión de Chrome para guardar recortes de texto seleccionados en cualquier página web, añadirles notas y etiquetas, y gestionarlos fácilmente desde un popup. Incluye búsqueda, filtrado, exportación a PDF, modo oscuro y opción de donación.
+Extensión de Chrome para guardar recortes de texto seleccionados en cualquier página web, añadirles notas y etiquetas, y gestionarlos fácilmente desde un popup. Incluye búsqueda, filtrado, exportación a PDF, modo oscuro, múltiples idiomas y opción de donación.
 
 ## Características
 
@@ -38,6 +38,11 @@ Desarrollado por Max.
 
 ---
 
+¿Te ha sido útil esta extensión? ¡Invítame un café! ☕ 
+
 [![Invítame un café](https://img.shields.io/badge/Inv%C3%ADtame%20un%20caf%C3%A9-%F0%9F%8D%94-yellow?style=for-the-badge)](https://coff.ee/freeextensions)
 
-¿Te ha sido útil esta extensión? ¡Invítame un café! ☕ 
+## Política de privacidad
+
+Esta extensión no recoge ni comparte datos personales. Todo se guarda localmente en tu navegador.
+
