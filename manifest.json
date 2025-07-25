@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Recortes con Notas",
+  "name": "ZenMarker",
   "version": "1.0.0",
   "description": "Guarda recortes de texto seleccionados en cualquier página con una nota opcional.",
   "permissions": [
