@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>Recortes</h1>
+  <h1><span id="titulo-principal">Recortes</span></h1>
   <div id="popup-header">
     <div id="total-recortes">Has guardado 0 recortes</div>
     <div id="theme-lang-container">
       <button id="theme-toggle" aria-label="Cambiar modo claro/oscuro" title="Cambiar modo claro/oscuro" type="button">🌙</button>
       <select id="lang-select" aria-label="Seleccionar idioma" title="Idioma">
         <option value="es">🇪🇸</option>
-        <option value="en">🇬��</option>
+        <option value="en">🇬🇧</option>
         <option value="it">🇮🇹</option>
         <option value="fr">🇫🇷</option>
         <option value="de">🇩🇪</option>
@@ -33,7 +33,7 @@
     <p id="sin-recortes" style="display:none;">No hay recortes guardados.</p>
   </div>
   <div id="donacion-humano">
-    <span>¿Esta extensión te ha sido útil? ¡Invítame un café! ☕</span>
+    <span id="donacion-msg">¿Esta extensión te ha sido útil? ¡Invítame un café! ☕</span>
     <button id="donacion-btn-final" aria-label="Invítame un café" title="Invítame un café" type="button">Buy Me a Coffee</button>
   </div>
   <script src="popup.js"></script>

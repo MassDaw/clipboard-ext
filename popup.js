@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const donacionBtnFinal = document.getElementById('donacion-btn-final');
   const exportarPdfBtn = document.getElementById('exportar-pdf');
   const langSelect = document.getElementById('lang-select');
+  const tituloPrincipal = document.getElementById('titulo-principal');
+  const donacionMsg = document.getElementById('donacion-msg');
   // Diccionario de traducciones
   const i18n = {
     es: {
+      titulo: 'Recortes',
       total: recs => `Has guardado ${recs} recortes`,
       buscar: 'Buscar…',
       sinRecortes: 'No hay recortes guardados.',
@@ -31,8 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
       fecha: 'Fecha',
       recorte: i => `Recorte ${i}`,
       recortesGuardados: 'Recortes guardados',
+      donacion: '¿Esta extensión te ha sido útil? ¡Invítame un café! ☕',
     },
     en: {
+      titulo: 'Clippings',
       total: recs => `You have saved ${recs} clippings`,
       buscar: 'Search…',
       sinRecortes: 'No clippings saved.',
@@ -49,8 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
       fecha: 'Date',
       recorte: i => `Clipping ${i}`,
       recortesGuardados: 'Saved clippings',
+      donacion: 'Has this extension been useful? Buy me a coffee! ☕',
     },
     it: {
+      titulo: 'Ritagli',
       total: recs => `Hai salvato ${recs} ritagli`,
       buscar: 'Cerca…',
       sinRecortes: 'Nessun ritaglio salvato.',
@@ -67,8 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
       fecha: 'Data',
       recorte: i => `Ritaglio ${i}`,
       recortesGuardados: 'Ritagli salvati',
+      donacion: 'Questa estensione ti è stata utile? Offrimi un caffè! ☕',
     },
     fr: {
+      titulo: 'Extraits',
       total: recs => `Vous avez enregistré ${recs} extraits`,
       buscar: 'Rechercher…',
       sinRecortes: 'Aucun extrait enregistré.',
@@ -85,8 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
       fecha: 'Date',
       recorte: i => `Extrait ${i}`,
       recortesGuardados: 'Extraits enregistrés',
+      donacion: 'Cette extension vous a été utile ? Offrez-moi un café ! ☕',
     },
     de: {
+      titulo: 'Ausschnitte',
       total: recs => `Du hast ${recs} Ausschnitte gespeichert`,
       buscar: 'Suchen…',
       sinRecortes: 'Keine Ausschnitte gespeichert.',
@@ -103,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fecha: 'Datum',
       recorte: i => `Ausschnitt ${i}`,
       recortesGuardados: 'Gespeicherte Ausschnitte',
+      donacion: 'War diese Erweiterung nützlich? Spendier mir einen Kaffee! ☕',
     }
   };
   let lang = 'es';
@@ -119,11 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   function traducirUI() {
     const t = i18n[lang];
+    tituloPrincipal.textContent = t.titulo;
     buscador.placeholder = t.buscar;
     filtroEtiqueta.querySelector('option[value=""]').textContent = t.todasEtiquetas;
     exportarPdfBtn.textContent = t.exportarPdf;
     totalRecortesDiv.textContent = t.total(recortes.length);
     sinRecortes.textContent = t.sinRecortes;
+    donacionMsg.textContent = t.donacion;
     // Títulos y botones de recortes
     document.querySelectorAll('.recorte').forEach((li, idx) => {
       const meta = li.querySelector('.meta');
@@ -138,8 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const fecha = li.querySelector('.fecha');
       if (fecha && recortes[idx]) fecha.textContent = nuevaFecha(recortes[idx].fecha);
     });
-    // Mensaje donación (opcional, si quieres traducirlo)
-    // document.querySelector('#donacion-humano span').textContent = ...
   }
 
   let recortes = [];
