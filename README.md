@@ -13,6 +13,7 @@ Extensión de Chrome para guardar recortes de texto seleccionados en cualquier p
 - **Pinea** tus recortes favoritos para mantenerlos siempre arriba.
 - Comparte recortes fácilmente por **WhatsApp**, **Gmail** o **Telegram** desde el menú de compartir.
 - Confirmación visual antes de eliminar un recorte.
+- **Eliminar todos los recortes** de una vez con confirmación de seguridad.
 - Interfaz moderna con nuevos iconos SVG para todas las acciones (copiar, compartir, borrar, pin, web).
 - Modo claro y oscuro con toggle y preferencia recordada.
 - Contador de recortes guardados (no disminuye al eliminar).

@@ -615,4 +615,43 @@ h1 {
 .dark-mode .btn-circular:hover {
   background: #3b4252;
   box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+/* Estilos para el botón Eliminar todo */
+#eliminar-todo-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+  padding: 0 10px;
+}
+
+#eliminar-todo-btn {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.95em;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: background 0.2s, border 0.2s;
+  outline: none;
+  font-weight: 500;
+}
+
+#eliminar-todo-btn:hover, #eliminar-todo-btn:focus {
+  background: #fecaca;
+  border-color: #f87171;
+}
+
+.dark-mode #eliminar-todo-btn {
+  background: #2d1b1b;
+  color: #fca5a5;
+  border-color: #4c1d1d;
+}
+
+.dark-mode #eliminar-todo-btn:hover, .dark-mode #eliminar-todo-btn:focus {
+  background: #4c1d1d;
+  border-color: #f87171;
 } 

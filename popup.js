@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const langSelect = document.getElementById('lang-select');
   const tituloPrincipal = document.getElementById('titulo-principal');
   const donacionMsg = document.getElementById('donacion-msg');
+  const eliminarTodoBtn = document.getElementById('eliminar-todo-btn');
   // Diccionario de traducciones
   const i18n = {
     es: {
@@ -45,6 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmar: 'Eliminar',
       cancelar: 'Cancelar',
       ordenarFecha: 'Ordenar por fecha',
+      eliminarTodo: 'Eliminar todo',
+      confirmarEliminarTodo: '¿Estás seguro de que quieres eliminar todos los recortes? Esta acción no se puede deshacer.',
     },
     en: {
       titulo: 'Clippings',
@@ -75,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmar: 'Delete',
       cancelar: 'Cancel',
       ordenarFecha: 'Sort by date',
+      eliminarTodo: 'Delete all',
+      confirmarEliminarTodo: 'Are you sure you want to delete all clippings? This action cannot be undone.',
     },
     it: {
       titulo: 'Ritagli',
@@ -105,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmar: 'Elimina',
       cancelar: 'Annulla',
       ordenarFecha: 'Ordina per data',
+      eliminarTodo: 'Elimina tutto',
+      confirmarEliminarTodo: 'Sei sicuro di voler eliminare tutti i ritagli? Questa azione non può essere annullata.',
     },
     fr: {
       titulo: 'Extraits',
@@ -135,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmar: 'Supprimer',
       cancelar: 'Annuler',
       ordenarFecha: 'Trier par date',
+      eliminarTodo: 'Tout supprimer',
+      confirmarEliminarTodo: 'Êtes-vous sûr de vouloir supprimer tous les extraits ? Cette action ne peut pas être annulée.',
     },
     de: {
       titulo: 'Ausschnitte',
@@ -165,6 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmar: 'Löschen',
       cancelar: 'Abbrechen',
       ordenarFecha: 'Nach Datum sortieren',
+      eliminarTodo: 'Alles löschen',
+      confirmarEliminarTodo: 'Sind Sie sicher, dass Sie alle Ausschnitte löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.',
     }
   };
   let lang = 'es';
@@ -189,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     totalRecortesDiv.textContent = t.total(recortes.length);
     sinRecortes.textContent = t.sinRecortes;
     donacionMsg.textContent = t.donacion;
+    eliminarTodoBtn.textContent = t.eliminarTodo;
     // Actualizar tooltip del botón de ordenar
     document.getElementById('ordenar-fecha').title = t.ordenarFecha;
     // Actualizar tooltips de botones sin afectar fechas
@@ -265,6 +277,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const fb = new Date(b.fecha).getTime();
       return ordenFechaAsc ? fa - fb : fb - fa;
     });
+    
+    // Mostrar/ocultar botón "Eliminar todo" según si hay recortes
+    if (recortes.length > 0) {
+      eliminarTodoBtn.style.display = 'block';
+    } else {
+      eliminarTodoBtn.style.display = 'none';
+    }
+    
     if (filtrados.length === 0) {
       sinRecortes.style.display = 'block';
       sinRecortes.textContent = i18n[lang].sinRecortes;
@@ -480,6 +500,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open('https://coff.ee/freeextensions', '_blank');
   });
 
+  // --- Botón eliminar todo ---
+  eliminarTodoBtn.addEventListener('click', () => {
+    mostrarConfirmacionEliminarTodo();
+  });
+
   // --- Formatear fecha ---
   function nuevaFecha(fechaISO) {
     const d = new Date(fechaISO);
@@ -509,10 +534,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function compartirRecorte(recorte) {
-    let texto = `${i18n[lang].texto}: ${recorte.texto}\n`;
-    if (recorte.nota) texto += `${i18n[lang].nota}: ${recorte.nota}\n`;
-    texto += `${i18n[lang].url}: ${recorte.url}\n`;
-    if (recorte.etiqueta) texto += `${i18n[lang].etiqueta}: ${recorte.etiqueta}\n`;
+    // Solo compartir el texto del snippet, sin etiquetas ni URL
+    let texto = recorte.texto;
+    if (recorte.nota) texto += `\n\n📝 ${recorte.nota}`;
 
     const urlWhatsapp = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     const urlGmail = `https://mail.google.com/mail/?view=cm&fs=1&body=${encodeURIComponent(texto)}`;
@@ -594,5 +618,43 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     document.addEventListener('keydown', handleKey);
+  }
+
+  function mostrarConfirmacionEliminarTodo() {
+    // Si ya hay un popup, no crear otro
+    if (document.querySelector('.popup-confirmar-eliminar')) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'popup-confirmar-eliminar-overlay';
+    overlay.innerHTML = `
+      <div class="popup-confirmar-eliminar">
+        <p>${i18n[lang].confirmarEliminarTodo}</p>
+        <div class="popup-confirmar-eliminar-acciones">
+          <button class="btn-confirmar">${i18n[lang].confirmar}</button>
+          <button class="btn-cancelar">${i18n[lang].cancelar}</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    overlay.querySelector('.btn-confirmar').onclick = () => {
+      eliminarTodosLosRecortes();
+      overlay.remove();
+    };
+    overlay.querySelector('.btn-cancelar').onclick = () => {
+      overlay.remove();
+    };
+    function handleKey(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        document.removeEventListener('keydown', handleKey);
+      }
+    }
+    document.addEventListener('keydown', handleKey);
+  }
+
+  function eliminarTodosLosRecortes() {
+    recortes = [];
+    chrome.storage.local.set({recortes: [], totalSaved: 0}, () => {
+      cargarRecortesYTotal();
+    });
   }
 });
