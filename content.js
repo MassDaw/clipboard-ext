@@ -71,10 +71,64 @@ function crearModalRecorte({texto, url}, callback) {
 // Escuchar mensajes del background
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "solicitarNota") {
-    crearModalRecorte(message, ({nota, etiqueta}) => {
+    // Obtener el texto seleccionado con formato HTML
+    const selection = window.getSelection();
+    let textoConFormato = '';
+    
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      
+      // Crear un contenedor temporal
+      const container = document.createElement('div');
+      container.appendChild(range.cloneContents());
+      
+      // Obtener el HTML directamente
+      textoConFormato = container.innerHTML;
+      
+      // Si está vacío, usar el texto original
+      if (!textoConFormato || textoConFormato.trim() === '') {
+        textoConFormato = message.texto;
+      } else {
+        // Preservar la estructura pero limpiar elementos innecesarios
+        textoConFormato = textoConFormato
+          // Convertir elementos de bloque a saltos de línea
+          .replace(/<div[^>]*>/gi, '<br>')
+          .replace(/<\/div>/gi, '')
+          .replace(/<p[^>]*>/gi, '<br>')
+          .replace(/<\/p>/gi, '')
+          .replace(/<h[1-6][^>]*>/gi, '<br>')
+          .replace(/<\/h[1-6]>/gi, '<br>')
+          .replace(/<li[^>]*>/gi, '<br>• ')
+          .replace(/<\/li>/gi, '')
+          .replace(/<ul[^>]*>/gi, '')
+          .replace(/<\/ul>/gi, '')
+          .replace(/<ol[^>]*>/gi, '')
+          .replace(/<\/ol>/gi, '')
+          // Limpiar elementos de span pero preservar el texto
+          .replace(/<span[^>]*>/gi, '')
+          .replace(/<\/span>/gi, '')
+          // Limpiar elementos de estilo pero preservar el texto
+          .replace(/<strong[^>]*>/gi, '<b>')
+          .replace(/<\/strong>/gi, '</b>')
+          .replace(/<em[^>]*>/gi, '<i>')
+          .replace(/<\/em>/gi, '</i>')
+          // Limpiar saltos de línea múltiples
+          .replace(/<br>\s*<br>/gi, '<br>')
+          .replace(/^<br>/i, '')
+          .replace(/<br>$/i, '')
+          // Limpiar espacios extra
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+      
+    } else {
+      textoConFormato = message.texto;
+    }
+    
+    crearModalRecorte({texto: textoConFormato, url: message.url}, ({nota, etiqueta}) => {
       chrome.runtime.sendMessage({
         action: "guardarRecorte",
-        texto: message.texto,
+        texto: textoConFormato,
         url: message.url,
         nota: nota,
         etiqueta: etiqueta

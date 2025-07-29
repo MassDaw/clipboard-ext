@@ -2,9 +2,9 @@ body {
   font-family: system-ui, sans-serif;
   margin: 0;
   padding: 0 10px 10px 10px;
-  background: #f8fafc;
-  min-width: 300px;
-  max-width: 400px;
+  background: #fff;
+  min-width: 350px;
+  max-width: 560px;
 }
 
 h1 {
@@ -63,9 +63,44 @@ h1 {
 .recorte .meta {
   display: flex;
   align-items: center;
-  gap: 10px;
   font-size: 0.85em;
   margin-top: 2px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.meta-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta-info a, .meta-info .badge-etiqueta, .meta-info .fecha {
+  vertical-align: middle;
+}
+
+.meta-info a {
+  font-size: 16px;
+}
+
+.meta-actions {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-left: auto;
+}
+
+.meta-actions button {
+  font-size: 16px;
+}
+
+.meta-actions button img, .meta-actions button svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.meta-actions .eliminar {
+  font-size: 16px !important;
 }
 
 .recorte .meta a {
@@ -218,18 +253,18 @@ h1 {
   vertical-align: middle;
 }
 .btn-copiar {
-  background: none;
-  border: none;
-  color: #2563eb;
-  font-size: 1.1em;
-  cursor: pointer;
-  margin-left: 6px;
-  border-radius: 3px;
-  padding: 2px 6px;
-  transition: background 0.2s;
+  background: none !important;
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
 }
-.btn-copiar:hover, .btn-copiar:focus {
-  background: #e0e7ef;
+
+.btn-copiar:hover, .btn-copiar:focus, .btn-copiar:active {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .copiado-msg {
   color: #22c55e;
@@ -347,4 +382,237 @@ h1 {
   background: #23232a;
   color: #fff;
   border-color: #27272a;
+} 
+.btn-copiar, .btn-compartir, .eliminar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.btn-compartir {
+  background: none !important;
+  border: none !important;
+  outline: none;
+}
+
+.btn-copiar:hover, .btn-compartir:hover, .eliminar:hover {
+  background: #f1f5f9;
+}
+
+.menu-compartir {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 50px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-compartir button {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-compartir button:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+} 
+
+.popup-confirmar-eliminar-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-confirmar-eliminar {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 28px 32px 22px 32px;
+  min-width: 260px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.popup-confirmar-eliminar-acciones {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-confirmar {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-confirmar:hover {
+  background: #dc2626;
+}
+
+.btn-cancelar {
+  background: #f1f5f9;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancelar:hover {
+  background: #e5e7eb;
+} 
+.icon-pin {
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-block;
+  vertical-align: middle;
+} 
+.btn-pin {
+  background: none !important;
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+} 
+.icon-action, .icon-website {
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-block;
+  vertical-align: middle;
+} 
+.dark-mode .popup-confirmar-eliminar {
+  background: #23272f;
+  color: #f1f5f9;
+}
+
+.dark-mode .popup-confirmar-eliminar-acciones .btn-confirmar {
+  background: #ef4444;
+  color: #fff;
+}
+
+.dark-mode .popup-confirmar-eliminar-acciones .btn-cancelar {
+  background: #2d323c;
+  color: #f1f5f9;
+}
+
+.dark-mode .popup-confirmar-eliminar-acciones .btn-cancelar:hover {
+  background: #3b4252;
+} 
+.dark-mode .menu-compartir {
+  background: #23272f;
+  border: 1px solid #353b48;
+}
+
+.dark-mode .menu-compartir button {
+  background: #2d323c;
+  color: #f1f5f9;
+}
+
+.dark-mode .menu-compartir button:hover {
+  background: #3b4252;
+  color: #fff;
+} 
+.recorte.pin-anim {
+  animation: pinMoveUp 0.7s cubic-bezier(0.4,0.0,0.2,1);
+}
+.recorte.unpin-anim {
+  animation: unpinMoveDown 0.7s cubic-bezier(0.4,0.0,0.2,1);
+}
+
+@keyframes pinMoveUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateY(-40px) scale(0.97);
+    box-shadow: 0 8px 24px rgba(37,99,235,0.18);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  }
+}
+
+@keyframes unpinMoveDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateY(40px) scale(0.97);
+    box-shadow: 0 8px 24px rgba(37,99,235,0.18);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  }
+} 
+.btn-circular {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  margin-left: 6px;
+  padding: 0;
+}
+.btn-circular:hover {
+  background: #f1f5f9;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+} 
+.dark-mode .btn-circular {
+  background: #2d323c;
+  color: #f1f5f9;
+}
+
+.dark-mode .btn-circular:hover {
+  background: #3b4252;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
 } 

@@ -10,6 +10,10 @@ Extensión de Chrome para guardar recortes de texto seleccionados en cualquier p
 - Filtrado por palabra clave (texto, nota, URL, etiqueta) y por etiqueta específica.
 - Exporta todos los recortes a un archivo **PDF** con un solo clic.
 - Copia cualquier recorte completo al portapapeles.
+- **Pinea** tus recortes favoritos para mantenerlos siempre arriba.
+- Comparte recortes fácilmente por **WhatsApp**, **Gmail** o **Telegram** desde el menú de compartir.
+- Confirmación visual antes de eliminar un recorte.
+- Interfaz moderna con nuevos iconos SVG para todas las acciones (copiar, compartir, borrar, pin, web).
 - Modo claro y oscuro con toggle y preferencia recordada.
 - Contador de recortes guardados (no disminuye al eliminar).
 - Botón de donación “Buy Me a Coffee” al final del popup.
@@ -27,7 +31,7 @@ Extensión de Chrome para guardar recortes de texto seleccionados en cualquier p
 1. Selecciona cualquier texto en una página web.
 2. Haz clic derecho y elige **Guardar recorte**.
 3. Ingresa una nota y una etiqueta (ambas opcionales) en los prompts.
-4. Abre el popup de la extensión para ver, buscar, filtrar, copiar o exportar tus recortes.
+4. Abre el popup de la extensión para ver, buscar, filtrar, copiar, compartir, pinnear o exportar tus recortes.
 5. Cambia entre modo claro y oscuro con el botón 🌙/☀️.
 6. Exporta todos los recortes a PDF con el botón **Exportar a PDF 🖨️**.
 7. Si te resulta útil, ¡invítame un café desde el botón al final del popup!

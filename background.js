@@ -53,12 +53,16 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 // Recibir recorte desde content.js y guardar en storage
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "guardarRecorte") {
+    // Normalizar la etiqueta antes de guardar
+    function normalizarTag(tag) {
+      return (tag || "").trim().toLowerCase();
+    }
     const recorte = {
       texto: message.texto,
       url: message.url,
       fecha: new Date().toISOString(),
       nota: message.nota || "",
-      etiqueta: message.etiqueta || ""
+      etiqueta: normalizarTag(message.etiqueta)
     };
     // Obtener recortes existentes, agregar el nuevo y guardar
     chrome.storage.local.get({recortes: [], totalSaved: 0}, (data) => {
