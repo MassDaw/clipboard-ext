@@ -1,0 +1,190 @@
+{
+  "extName": {
+    "message": "ZenMarker",
+    "description": "Nome dell'estensione"
+  },
+  "extDescription": {
+    "message": "Salva ritagli di testo selezionati da qualsiasi pagina web con una nota opzionale.",
+    "description": "Descrizione dell'estensione"
+  },
+  "contextMenuSaveSnippet": {
+    "message": "Salva ritaglio",
+    "description": "Elemento del menu contestuale per salvare il testo selezionato"
+  },
+  "popupTitle": {
+    "message": "Ritagli",
+    "description": "Titolo principale del popup"
+  },
+  "totalSnippets": {
+    "message": "Hai salvato %d ritagli",
+    "description": "Contatore totale dei ritagli con segnaposto"
+  },
+  "searchPlaceholder": {
+    "message": "Cerca…",
+    "description": "Segnaposto del campo di ricerca"
+  },
+  "noSnippets": {
+    "message": "Nessun ritaglio salvato.",
+    "description": "Messaggio quando non ci sono ritagli"
+  },
+  "allTags": {
+    "message": "Tutte le etichette",
+    "description": "Opzione filtro per tutte le etichette"
+  },
+  "exportPdf": {
+    "message": "Esporta in PDF 🖨️",
+    "description": "Pulsante per esportare in PDF"
+  },
+  "copySnippet": {
+    "message": "Copia ritaglio",
+    "description": "Pulsante per copiare ritaglio"
+  },
+  "copied": {
+    "message": "Copiato",
+    "description": "Messaggio di conferma copiato"
+  },
+  "delete": {
+    "message": "Elimina",
+    "description": "Pulsante elimina"
+  },
+  "goToPage": {
+    "message": "Vai alla pagina",
+    "description": "Pulsante per andare alla pagina"
+  },
+  "text": {
+    "message": "Testo",
+    "description": "Etichetta testo"
+  },
+  "note": {
+    "message": "Nota",
+    "description": "Etichetta nota"
+  },
+  "url": {
+    "message": "URL",
+    "description": "Etichetta URL"
+  },
+  "tag": {
+    "message": "Etichetta",
+    "description": "Etichetta etichetta"
+  },
+  "date": {
+    "message": "Data",
+    "description": "Etichetta data"
+  },
+  "snippetNumber": {
+    "message": "Ritaglio %d",
+    "description": "Numero di ritaglio con segnaposto"
+  },
+  "savedSnippets": {
+    "message": "Ritagli salvati",
+    "description": "Titolo ritagli salvati"
+  },
+  "donationMessage": {
+    "message": "Questa estensione ti è stata utile? Offrimi un caffè! ☕",
+    "description": "Messaggio di donazione"
+  },
+  "pin": {
+    "message": "Fissa",
+    "description": "Pulsante fissa"
+  },
+  "unpin": {
+    "message": "Rimuovi",
+    "description": "Pulsante rimuovi"
+  },
+  "share": {
+    "message": "Condividi",
+    "description": "Pulsante condividi"
+  },
+  "shareWhatsApp": {
+    "message": "Condividi via WhatsApp",
+    "description": "Opzione per condividere via WhatsApp"
+  },
+  "shareGmail": {
+    "message": "Condividi via Gmail",
+    "description": "Opzione per condividere via Gmail"
+  },
+  "shareTelegram": {
+    "message": "Condividi via Telegram",
+    "description": "Opzione per condividere via Telegram"
+  },
+  "confirmDelete": {
+    "message": "Sei sicuro di voler eliminare questo ritaglio?",
+    "description": "Messaggio di conferma eliminazione"
+  },
+  "confirm": {
+    "message": "Elimina",
+    "description": "Pulsante conferma"
+  },
+  "cancel": {
+    "message": "Annulla",
+    "description": "Pulsante annulla"
+  },
+  "sortByDate": {
+    "message": "Ordina per data",
+    "description": "Pulsante per ordinare per data"
+  },
+  "deleteAll": {
+    "message": "Elimina tutto",
+    "description": "Pulsante elimina tutto"
+  },
+  "confirmDeleteAll": {
+    "message": "Sei sicuro di voler eliminare tutti i ritagli? Questa azione non può essere annullata.",
+    "description": "Messaggio di conferma per eliminare tutto"
+  },
+  "themeToggle": {
+    "message": "Cambia modalità chiaro/scuro",
+    "description": "Aria-label del pulsante cambio tema"
+  },
+  "languageSelect": {
+    "message": "Seleziona lingua",
+    "description": "Aria-label del selettore lingua"
+  },
+  "searchSnippets": {
+    "message": "Cerca ritagli",
+    "description": "Aria-label del campo di ricerca"
+  },
+  "buyMeCoffee": {
+    "message": "Offrimi un caffè",
+    "description": "Pulsante offrimi un caffè"
+  },
+  "buyMeCoffeeTitle": {
+    "message": "Offrimi un caffè",
+    "description": "Titolo del pulsante offrimi un caffè"
+  },
+  "notePrompt": {
+    "message": "Aggiungi un titolo (opzionale):",
+    "description": "Prompt per input titolo"
+  },
+  "tagPrompt": {
+    "message": "Aggiungi un'etichetta (opzionale):",
+    "description": "Prompt per input etichetta"
+  },
+  "saveButton": {
+    "message": "Salva",
+    "description": "Pulsante salva"
+  },
+  "cancelButton": {
+    "message": "Annulla",
+    "description": "Pulsante annulla"
+  },
+  "justNow": {
+    "message": "Proprio ora",
+    "description": "Indicatore di tempo per proprio ora"
+  },
+  "minutesAgo": {
+    "message": "%d minuti fa",
+    "description": "Indicatore di tempo per minuti fa"
+  },
+  "hoursAgo": {
+    "message": "%d ore fa",
+    "description": "Indicatore di tempo per ore fa"
+  },
+  "daysAgo": {
+    "message": "%d giorni fa",
+    "description": "Indicatore di tempo per giorni fa"
+  },
+  "keyboardShortcutDescription": {
+    "message": "Salva il testo selezionato come ritaglio",
+    "description": "Descrizione per il comando di scorciatoia da tastiera"
+  }
+} 

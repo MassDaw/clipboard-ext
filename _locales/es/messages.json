@@ -1,0 +1,190 @@
+{
+  "extName": {
+    "message": "ZenMarker",
+    "description": "Nombre de la extensión"
+  },
+  "extDescription": {
+    "message": "Guarda recortes de texto seleccionados en cualquier página con una nota opcional.",
+    "description": "Descripción de la extensión"
+  },
+  "contextMenuSaveSnippet": {
+    "message": "Guardar recorte",
+    "description": "Elemento del menú contextual para guardar texto seleccionado"
+  },
+  "popupTitle": {
+    "message": "Recortes",
+    "description": "Título principal del popup"
+  },
+  "totalSnippets": {
+    "message": "Has guardado %d recortes",
+    "description": "Contador total de recortes con marcador de posición"
+  },
+  "searchPlaceholder": {
+    "message": "Buscar…",
+    "description": "Marcador de posición del campo de búsqueda"
+  },
+  "noSnippets": {
+    "message": "No hay recortes guardados.",
+    "description": "Mensaje cuando no hay recortes"
+  },
+  "allTags": {
+    "message": "Todas las etiquetas",
+    "description": "Opción de filtro para todas las etiquetas"
+  },
+  "exportPdf": {
+    "message": "Exportar a PDF 🖨️",
+    "description": "Botón para exportar a PDF"
+  },
+  "copySnippet": {
+    "message": "Copiar recorte",
+    "description": "Botón para copiar recorte"
+  },
+  "copied": {
+    "message": "Copiado",
+    "description": "Mensaje de confirmación de copiado"
+  },
+  "delete": {
+    "message": "Eliminar",
+    "description": "Botón eliminar"
+  },
+  "goToPage": {
+    "message": "Ir a la página",
+    "description": "Botón para ir a la página"
+  },
+  "text": {
+    "message": "Texto",
+    "description": "Etiqueta de texto"
+  },
+  "note": {
+    "message": "Nota",
+    "description": "Etiqueta de nota"
+  },
+  "url": {
+    "message": "URL",
+    "description": "Etiqueta de URL"
+  },
+  "tag": {
+    "message": "Etiqueta",
+    "description": "Etiqueta de etiqueta"
+  },
+  "date": {
+    "message": "Fecha",
+    "description": "Etiqueta de fecha"
+  },
+  "snippetNumber": {
+    "message": "Recorte %d",
+    "description": "Número de recorte con marcador de posición"
+  },
+  "savedSnippets": {
+    "message": "Recortes guardados",
+    "description": "Título de recortes guardados"
+  },
+  "donationMessage": {
+    "message": "¿Esta extensión te ha sido útil? ¡Invítame un café! ☕",
+    "description": "Mensaje de donación"
+  },
+  "pin": {
+    "message": "Pinear",
+    "description": "Botón pinear"
+  },
+  "unpin": {
+    "message": "Despinear",
+    "description": "Botón despinear"
+  },
+  "share": {
+    "message": "Compartir",
+    "description": "Botón compartir"
+  },
+  "shareWhatsApp": {
+    "message": "Compartir por WhatsApp",
+    "description": "Opción para compartir por WhatsApp"
+  },
+  "shareGmail": {
+    "message": "Compartir por Gmail",
+    "description": "Opción para compartir por Gmail"
+  },
+  "shareTelegram": {
+    "message": "Compartir por Telegram",
+    "description": "Opción para compartir por Telegram"
+  },
+  "confirmDelete": {
+    "message": "¿Seguro que quieres eliminar este recorte?",
+    "description": "Mensaje de confirmación de eliminación"
+  },
+  "confirm": {
+    "message": "Eliminar",
+    "description": "Botón confirmar"
+  },
+  "cancel": {
+    "message": "Cancelar",
+    "description": "Botón cancelar"
+  },
+  "sortByDate": {
+    "message": "Ordenar por fecha",
+    "description": "Botón para ordenar por fecha"
+  },
+  "deleteAll": {
+    "message": "Eliminar todo",
+    "description": "Botón eliminar todo"
+  },
+  "confirmDeleteAll": {
+    "message": "¿Estás seguro de que quieres eliminar todos los recortes? Esta acción no se puede deshacer.",
+    "description": "Mensaje de confirmación para eliminar todo"
+  },
+  "themeToggle": {
+    "message": "Cambiar modo claro/oscuro",
+    "description": "Aria-label del botón de cambio de tema"
+  },
+  "languageSelect": {
+    "message": "Seleccionar idioma",
+    "description": "Aria-label del selector de idioma"
+  },
+  "searchSnippets": {
+    "message": "Buscar recortes",
+    "description": "Aria-label del campo de búsqueda"
+  },
+  "buyMeCoffee": {
+    "message": "Invítame un café",
+    "description": "Botón invítame un café"
+  },
+  "buyMeCoffeeTitle": {
+    "message": "Invítame un café",
+    "description": "Título del botón invítame un café"
+  },
+  "notePrompt": {
+    "message": "Añadir un título (opcional):",
+    "description": "Prompt para entrada de título"
+  },
+  "tagPrompt": {
+    "message": "Añadir una etiqueta (opcional):",
+    "description": "Prompt para entrada de etiqueta"
+  },
+  "saveButton": {
+    "message": "Guardar",
+    "description": "Botón guardar"
+  },
+  "cancelButton": {
+    "message": "Cancelar",
+    "description": "Botón cancelar"
+  },
+  "justNow": {
+    "message": "Ahora mismo",
+    "description": "Indicador de tiempo para ahora mismo"
+  },
+  "minutesAgo": {
+    "message": "Hace %d minutos",
+    "description": "Indicador de tiempo para minutos atrás"
+  },
+  "hoursAgo": {
+    "message": "Hace %d horas",
+    "description": "Indicador de tiempo para horas atrás"
+  },
+  "daysAgo": {
+    "message": "Hace %d días",
+    "description": "Indicador de tiempo para días atrás"
+  },
+  "keyboardShortcutDescription": {
+    "message": "Guardar texto seleccionado como recorte",
+    "description": "Descripción para el comando de atajo de teclado"
+  }
+} 

@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recortes guardados</title>
+  <title id="popup-title"></title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body style="max-width:560px;">
-  <h1><span id="titulo-principal">Recortes</span></h1>
+  <h1><span id="titulo-principal"></span></h1>
   <div id="popup-header">
-    <div id="total-recortes">Has guardado 0 recortes</div>
+    <div id="total-recortes"></div>
     <div id="theme-lang-container">
-      <button id="theme-toggle" aria-label="Cambiar modo claro/oscuro" title="Cambiar modo claro/oscuro" type="button">🌙</button>
-      <select id="lang-select" aria-label="Seleccionar idioma" title="Idioma">
-        <option value="es">🇪🇸</option>
+      <button id="theme-toggle" type="button">🌙</button>
+      <select id="lang-select">
         <option value="en">🇺🇸</option>
+        <option value="es">🇪🇸</option>
         <option value="it">🇮🇹</option>
         <option value="fr">🇫🇷</option>
         <option value="de">🇩🇪</option>
       </select>
     </div>
   </div>
-  <input id="buscador-recortes" type="text" placeholder="Buscar…" aria-label="Buscar recortes" autocomplete="off" />
+  <input id="buscador-recortes" type="text" autocomplete="off" />
   <div id="filtros-container">
     <select id="filtro-etiqueta">
-      <option value="">Etiquetas</option>
+      <option value=""></option>
     </select>
-    <button id="exportar-pdf" type="button">Exportar a PDF 🖨️</button>
-    <button id="ordenar-fecha" type="button" title="Ordenar por fecha" class="btn-circular"><img src="icons/order-by.svg" alt="Ordenar" id="icono-ordenar-fecha" style="width:18px;height:18px;vertical-align:middle;"></button>
+    <button id="exportar-pdf" type="button"></button>
+    <button id="ordenar-fecha" type="button" class="btn-circular"><img src="icons/order-by.svg" alt="" id="icono-ordenar-fecha" style="width:18px;height:18px;vertical-align:middle;"></button>
   </div>
   <div id="recortes-container">
     <ul id="recortes-list"></ul>
-    <p id="sin-recortes" style="display:none;">No hay recortes guardados.</p>
+    <p id="sin-recortes" style="display:none;"></p>
   </div>
   <div id="eliminar-todo-container">
-    <button id="eliminar-todo-btn" type="button" style="display:none;">Eliminar todo</button>
+    <button id="eliminar-todo-btn" type="button" style="display:none;"></button>
   </div>
   <div id="donacion-humano">
-    <span id="donacion-msg">¿Esta extensión te ha sido útil? ¡Invítame un café! ☕</span>
-    <button id="donacion-btn-final" aria-label="Invítame un café" title="Invítame un café" type="button">Buy Me a Coffee</button>
+    <span id="donacion-msg"></span>
+    <button id="donacion-btn-final" type="button"></button>
   </div>
   <script src="popup.js"></script>
 </body>

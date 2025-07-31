@@ -2,16 +2,10 @@
 // Recibe mensaje del background, solicita nota y etiqueta en un modal custom y envía recorte
 
 function crearModalRecorte({texto, url}, callback) {
-  // Detectar idioma del navegador
-  const lang = (navigator.language || 'es').slice(0,2);
-  const i18n = {
-    es: { guardar: 'Guardar recorte', titulo: 'Título (opcional):', etiqueta: 'Etiqueta (opcional):', cancelar: 'Cancelar', aceptar: 'Aceptar' },
-    en: { guardar: 'Save clipping', titulo: 'Title (optional):', etiqueta: 'Tag (optional):', cancelar: 'Cancel', aceptar: 'OK' },
-    it: { guardar: 'Salva ritaglio', titulo: 'Titolo (opzionale):', etiqueta: 'Etichetta (opzionale):', cancelar: 'Annulla', aceptar: 'OK' },
-    fr: { guardar: 'Enregistrer extrait', titulo: 'Titre (optionnel):', etiqueta: 'Étiquette (optionnelle):', cancelar: 'Annuler', aceptar: 'OK' },
-    de: { guardar: 'Ausschnitt speichern', titulo: 'Titel (optional):', etiqueta: 'Tag (optional):', cancelar: 'Abbrechen', aceptar: 'OK' }
-  };
-  const t = i18n[lang] || i18n['es'];
+  // Función para obtener mensajes localizados
+  function getMessage(key) {
+    return chrome.i18n.getMessage(key);
+  }
 
   // Eliminar si ya existe
   const existente = document.getElementById('zenmarker-modal');
@@ -27,16 +21,16 @@ function crearModalRecorte({texto, url}, callback) {
   const modal = document.createElement('div');
   modal.style = `background: #23232a; color: #f1f5f9; border-radius: 14px; box-shadow: 0 4px 32px #0008; padding: 18px 14px 14px 14px; min-width: 250px; max-width: 90vw; font-family: system-ui, sans-serif; position: relative;`;
   modal.innerHTML = `
-    <div style="font-size:1.08em; font-weight:600; margin-bottom:10px; letter-spacing:0.01em;">${t.guardar}</div>
+    <div style="font-size:1.08em; font-weight:600; margin-bottom:10px; letter-spacing:0.01em;">${getMessage('contextMenuSaveSnippet')}</div>
     <div style="font-size:0.97em; margin-bottom:8px; color:#cbd5e1;">${texto.length > 80 ? texto.slice(0,80)+'…' : texto}</div>
     <form id="zenmarker-form">
-      <label style="display:block; margin-bottom:6px; color:#e0e7ef;">${t.titulo}</label>
+      <label style="display:block; margin-bottom:6px; color:#e0e7ef;">${getMessage('notePrompt')}</label>
       <input id="zenmarker-nota" type="text" style="width:100%;padding:8px 8px;margin-bottom:10px;border:1.5px solid #334155;background:#18181b;color:#f1f5f9;border-radius:8px;font-size:1em;outline:none;" maxlength="200" autocomplete="off" />
-      <label style="display:block; margin-bottom:6px; color:#e0e7ef;">${t.etiqueta}</label>
+      <label style="display:block; margin-bottom:6px; color:#e0e7ef;">${getMessage('tagPrompt')}</label>
       <input id="zenmarker-etiqueta" type="text" style="width:100%;padding:8px 8px;margin-bottom:12px;border:1.5px solid #334155;background:#18181b;color:#f1f5f9;border-radius:8px;font-size:1em;outline:none;" maxlength="50" autocomplete="off" />
       <div style="display:flex;gap:10px;justify-content:flex-end;">
-        <button type="button" id="zenmarker-cancelar" style="background:#23232a;color:#a3a3a3;border:1.5px solid #334155;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:1em;transition:background 0.2s;">${t.cancelar}</button>
-        <button type="submit" style="background:#2563eb;color:#fff;border:none;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:1em;font-weight:500;box-shadow:0 1px 2px #0002;transition:background 0.2s;">${t.aceptar}</button>
+        <button type="button" id="zenmarker-cancelar" style="background:#23232a;color:#a3a3a3;border:1.5px solid #334155;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:1em;transition:background 0.2s;">${getMessage('cancelButton')}</button>
+        <button type="submit" style="background:#2563eb;color:#fff;border:none;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:1em;font-weight:500;box-shadow:0 1px 2px #0002;transition:background 0.2s;">${getMessage('saveButton')}</button>
       </div>
     </form>
     <button id="zenmarker-cerrar" style="position:absolute;top:8px;right:10px;background:none;border:none;font-size:1.2em;color:#64748b;cursor:pointer;">&times;</button>
@@ -75,6 +69,55 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const selection = window.getSelection();
     let textoConFormato = '';
     
+    // Función para obtener texto del elemento activo (para formularios y elementos editables)
+    function obtenerTextoElementoActivo() {
+      const activeElement = document.activeElement;
+      if (activeElement) {
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+          return activeElement.value || activeElement.textContent || '';
+        } else if (activeElement.contentEditable === 'true') {
+          return activeElement.textContent || '';
+        }
+      }
+      
+      // Buscar otros elementos editables
+      const editableElements = document.querySelectorAll('input, textarea, [contenteditable="true"]');
+      for (let element of editableElements) {
+        if (element.value && element.value.trim()) {
+          return element.value;
+        }
+      }
+      
+      return '';
+    }
+    
+    // Función para obtener texto de PDFs y documentos
+    function obtenerTextoPDF() {
+      // Intentar obtener texto seleccionado primero
+      const selection = window.getSelection();
+      if (selection && selection.toString().trim()) {
+        return selection.toString();
+      }
+      
+      // Intentar obtener texto de elementos PDF
+      const pdfElements = document.querySelectorAll('embed[type="application/pdf"], object[type="application/pdf"]');
+      if (pdfElements.length > 0) {
+        // Para PDFs embebidos, intentar obtener el texto del contexto
+        return selection.toString() || message.texto || '';
+      }
+      
+      // Intentar obtener texto de elementos de texto en el documento
+      const textElements = document.querySelectorAll('p, div, span, h1, h2, h3, h4, h5, h6');
+      let texto = '';
+      textElements.forEach(element => {
+        if (element.textContent && element.textContent.trim()) {
+          texto += element.textContent.trim() + '\n';
+        }
+      });
+      
+      return texto.trim();
+    }
+    
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
       
@@ -104,6 +147,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           .replace(/<\/ul>/gi, '')
           .replace(/<ol[^>]*>/gi, '')
           .replace(/<\/ol>/gi, '')
+          // Eliminar enlaces pero preservar el texto dentro de ellos
+          .replace(/<a[^>]*>/gi, '')
+          .replace(/<\/a>/gi, '')
           // Limpiar elementos de span pero preservar el texto
           .replace(/<span[^>]*>/gi, '')
           .replace(/<\/span>/gi, '')
@@ -122,7 +168,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       }
       
     } else {
-      textoConFormato = message.texto;
+      // Si no hay selección, intentar obtener texto del elemento activo o del mensaje
+      textoConFormato = obtenerTextoElementoActivo() || obtenerTextoPDF() || message.texto;
     }
     
     crearModalRecorte({texto: textoConFormato, url: message.url}, ({nota, etiqueta}) => {
@@ -130,6 +177,18 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         action: "guardarRecorte",
         texto: textoConFormato,
         url: message.url,
+        nota: nota,
+        etiqueta: etiqueta
+      });
+    });
+  } else if (message.action === "saveSnippetFromKeyboard") {
+    console.log("Mensaje de atajo de teclado recibido:", message);
+    // Manejar guardado desde atajo de teclado
+    crearModalRecorte(message.data, ({nota, etiqueta}) => {
+      chrome.runtime.sendMessage({
+        action: "guardarRecorte",
+        texto: message.data.texto,
+        url: message.data.url,
         nota: nota,
         etiqueta: etiqueta
       });

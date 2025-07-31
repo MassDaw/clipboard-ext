@@ -1,13 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "ZenMarker",
+  "name": "__MSG_extName__",
   "version": "1.0.1",
-  "description": "Guarda recortes de texto seleccionados en cualquier página con una nota opcional.",
+  "description": "__MSG_extDescription__",
+  "default_locale": "en",
   "permissions": [
     "storage",
     "activeTab",
     "contextMenus",
-    "scripting"
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "background": {
     "service_worker": "background.js"
@@ -27,5 +32,14 @@
       "js": ["content.js"],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "commands": {
+    "save-selected-text": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "__MSG_keyboardShortcutDescription__"
+    }
+  }
 } 

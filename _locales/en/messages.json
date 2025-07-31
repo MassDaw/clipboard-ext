@@ -1,0 +1,190 @@
+{
+  "extName": {
+    "message": "ZenMarker",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Save text snippets from any website with optional notes and tags.",
+    "description": "Extension description"
+  },
+  "contextMenuSaveSnippet": {
+    "message": "Save snippet",
+    "description": "Context menu item to save selected text"
+  },
+  "popupTitle": {
+    "message": "Snippets",
+    "description": "Main popup title"
+  },
+  "totalSnippets": {
+    "message": "You have saved %d snippets",
+    "description": "Total snippets counter with placeholder"
+  },
+  "searchPlaceholder": {
+    "message": "Search…",
+    "description": "Search input placeholder"
+  },
+  "noSnippets": {
+    "message": "No snippets saved.",
+    "description": "Message when no snippets exist"
+  },
+  "allTags": {
+    "message": "All tags",
+    "description": "All tags filter option"
+  },
+  "exportPdf": {
+    "message": "Export to PDF 🖨️",
+    "description": "Export to PDF button"
+  },
+  "copySnippet": {
+    "message": "Copy snippet",
+    "description": "Copy snippet button"
+  },
+  "copied": {
+    "message": "Copied",
+    "description": "Copied confirmation message"
+  },
+  "delete": {
+    "message": "Delete",
+    "description": "Delete button"
+  },
+  "goToPage": {
+    "message": "Go to page",
+    "description": "Go to page button"
+  },
+  "text": {
+    "message": "Text",
+    "description": "Text label"
+  },
+  "note": {
+    "message": "Note",
+    "description": "Note label"
+  },
+  "url": {
+    "message": "URL",
+    "description": "URL label"
+  },
+  "tag": {
+    "message": "Tag",
+    "description": "Tag label"
+  },
+  "date": {
+    "message": "Date",
+    "description": "Date label"
+  },
+  "snippetNumber": {
+    "message": "Snippet %d",
+    "description": "Snippet number with placeholder"
+  },
+  "savedSnippets": {
+    "message": "Saved snippets",
+    "description": "Saved snippets title"
+  },
+  "donationMessage": {
+    "message": "Has this extension been useful? Buy me a coffee! ☕",
+    "description": "Donation message"
+  },
+  "pin": {
+    "message": "Pin",
+    "description": "Pin button"
+  },
+  "unpin": {
+    "message": "Unpin",
+    "description": "Unpin button"
+  },
+  "share": {
+    "message": "Share",
+    "description": "Share button"
+  },
+  "shareWhatsApp": {
+    "message": "Share via WhatsApp",
+    "description": "Share via WhatsApp option"
+  },
+  "shareGmail": {
+    "message": "Share via Gmail",
+    "description": "Share via Gmail option"
+  },
+  "shareTelegram": {
+    "message": "Share via Telegram",
+    "description": "Share via Telegram option"
+  },
+  "confirmDelete": {
+    "message": "Are you sure you want to delete this snippet?",
+    "description": "Delete confirmation message"
+  },
+  "confirm": {
+    "message": "Delete",
+    "description": "Confirm button"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel button"
+  },
+  "sortByDate": {
+    "message": "Sort by date",
+    "description": "Sort by date button"
+  },
+  "deleteAll": {
+    "message": "Delete all",
+    "description": "Delete all button"
+  },
+  "confirmDeleteAll": {
+    "message": "Are you sure you want to delete all snippets? This action cannot be undone.",
+    "description": "Delete all confirmation message"
+  },
+  "themeToggle": {
+    "message": "Toggle light/dark mode",
+    "description": "Theme toggle button aria-label"
+  },
+  "languageSelect": {
+    "message": "Select language",
+    "description": "Language select aria-label"
+  },
+  "searchSnippets": {
+    "message": "Search snippets",
+    "description": "Search input aria-label"
+  },
+  "buyMeCoffee": {
+    "message": "Buy me a coffee",
+    "description": "Buy me a coffee button"
+  },
+  "buyMeCoffeeTitle": {
+    "message": "Buy me a coffee",
+    "description": "Buy me a coffee button title"
+  },
+  "notePrompt": {
+    "message": "Add a title (optional):",
+    "description": "Title input prompt"
+  },
+  "tagPrompt": {
+    "message": "Add a tag (optional):",
+    "description": "Tag input prompt"
+  },
+  "saveButton": {
+    "message": "Save",
+    "description": "Save button"
+  },
+  "cancelButton": {
+    "message": "Cancel",
+    "description": "Cancel button"
+  },
+  "justNow": {
+    "message": "Just now",
+    "description": "Time indicator for just now"
+  },
+  "minutesAgo": {
+    "message": "%d minutes ago",
+    "description": "Time indicator for minutes ago"
+  },
+  "hoursAgo": {
+    "message": "%d hours ago",
+    "description": "Time indicator for hours ago"
+  },
+  "daysAgo": {
+    "message": "%d days ago",
+    "description": "Time indicator for days ago"
+  },
+  "keyboardShortcutDescription": {
+    "message": "Save selected text as snippet",
+    "description": "Description for keyboard shortcut command"
+  }
+} 

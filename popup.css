@@ -300,6 +300,8 @@ h1 {
   background: #fff3c4;
   border-color: #ffd36b;
 }
+
+
 /* Modo oscuro */
 .dark-mode,
 .dark-mode body {
@@ -350,6 +352,10 @@ h1 {
   background: #27272a;
   border-color: #fbbf24;
 }
+
+
+
+
 .dark-mode .badge-etiqueta {
   background: #27272a;
   color: #fbbf24;

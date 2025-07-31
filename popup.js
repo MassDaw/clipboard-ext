@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const tituloPrincipal = document.getElementById('titulo-principal');
   const donacionMsg = document.getElementById('donacion-msg');
   const eliminarTodoBtn = document.getElementById('eliminar-todo-btn');
+  
+  // Función para obtener mensajes localizados
+  function getMessage(key, substitutions = []) {
+    return chrome.i18n.getMessage(key, substitutions);
+  }
+  
   // Diccionario de traducciones
   const i18n = {
     es: {
@@ -29,13 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminar: 'Eliminar',
       irPagina: 'Ir a la página',
       texto: 'Texto',
-      nota: 'Nota',
+      nota: 'Título',
       url: 'URL',
       etiqueta: 'Etiqueta',
       fecha: 'Fecha',
       recorte: i => `Recorte ${i}`,
       recortesGuardados: 'Recortes guardados',
       donacion: '¿Esta extensión te ha sido útil? ¡Invítame un café! ☕',
+      buyMeCoffee: 'Invítame un café',
+
       pin: 'Pinear',
       unpin: 'Despinear',
       compartir: 'Compartir',
@@ -61,13 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminar: 'Delete',
       irPagina: 'Go to page',
       texto: 'Text',
-      nota: 'Note',
+      nota: 'Title',
       url: 'URL',
       etiqueta: 'Tag',
       fecha: 'Date',
       recorte: i => `Clipping ${i}`,
       recortesGuardados: 'Saved clippings',
       donacion: 'Has this extension been useful? Buy me a coffee! ☕',
+      buyMeCoffee: 'Buy me a coffee',
+
       pin: 'Pin',
       unpin: 'Unpin',
       compartir: 'Share',
@@ -93,13 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminar: 'Elimina',
       irPagina: 'Vai alla pagina',
       texto: 'Testo',
-      nota: 'Nota',
+      nota: 'Titolo',
       url: 'URL',
       etiqueta: 'Etichetta',
       fecha: 'Data',
       recorte: i => `Ritaglio ${i}`,
       recortesGuardados: 'Ritagli salvati',
       donacion: 'Questa estensione ti è stata utile? Offrimi un caffè! ☕',
+      buyMeCoffee: 'Offrimi un caffè',
+
       pin: 'Fissa',
       unpin: 'Sblocca',
       compartir: 'Condividi',
@@ -120,25 +132,27 @@ document.addEventListener('DOMContentLoaded', () => {
       sinRecortes: 'Aucun extrait enregistré.',
       todasEtiquetas: 'Toutes les étiquettes',
       exportarPdf: 'Exporter en PDF 🖨️',
-      copiar: 'Copier l’extrait',
+      copiar: 'Copier l\'extrait',
       copiado: 'Copié',
       eliminar: 'Supprimer',
       irPagina: 'Aller à la page',
       texto: 'Texte',
-      nota: 'Note',
+      nota: 'Titre',
       url: 'URL',
       etiqueta: 'Étiquette',
       fecha: 'Date',
       recorte: i => `Extrait ${i}`,
       recortesGuardados: 'Extraits enregistrés',
       donacion: 'Cette extension vous a été utile ? Offrez-moi un café ! ☕',
+      buyMeCoffee: 'Offrez-moi un café',
+
       pin: 'Épingler',
       unpin: 'Désépingler',
       compartir: 'Partager',
       compartirWhatsapp: 'Partager via WhatsApp',
       compartirGmail: 'Partager via Gmail',
       compartirTelegram: 'Partager via Telegram',
-      confirmarEliminar: 'Êtes-vous sûr de vouloir supprimer cet extrait ?',
+      confirmarEliminar: 'Êtes-vous sûr de vouloir supprimer cet extrait ?',
       confirmar: 'Supprimer',
       cancelar: 'Annuler',
       ordenarFecha: 'Trier par date',
@@ -157,13 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
       eliminar: 'Löschen',
       irPagina: 'Zur Seite',
       texto: 'Text',
-      nota: 'Notiz',
+      nota: 'Titel',
       url: 'URL',
       etiqueta: 'Tag',
       fecha: 'Datum',
       recorte: i => `Ausschnitt ${i}`,
       recortesGuardados: 'Gespeicherte Ausschnitte',
       donacion: 'War diese Erweiterung nützlich? Spendier mir einen Kaffee! ☕',
+      buyMeCoffee: 'Spendier mir einen Kaffee',
+
       pin: 'Anheften',
       unpin: 'Lösen',
       compartir: 'Teilen',
@@ -201,6 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
     sinRecortes.textContent = t.sinRecortes;
     donacionMsg.textContent = t.donacion;
     eliminarTodoBtn.textContent = t.eliminarTodo;
+    donacionBtnFinal.textContent = t.buyMeCoffee;
+
     // Actualizar tooltip del botón de ordenar
     document.getElementById('ordenar-fecha').title = t.ordenarFecha;
     // Actualizar tooltips de botones sin afectar fechas
@@ -291,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     sinRecortes.style.display = 'none';
+    
     filtrados.forEach((recorte, idx) => {
       const li = document.createElement('li');
       li.className = 'recorte';
@@ -471,23 +490,171 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Exportar a PDF ---
   exportarPdfBtn.addEventListener('click', () => {
     if (!recortes.length) return;
+    
     // Crear ventana nueva con el contenido de los recortes
     let html = `<html><head><title>${i18n[lang].recortesGuardados}</title><style>
-      body { font-family: system-ui, sans-serif; margin: 30px; color: #222; }
-      h1 { color: #2563eb; }
-      .recorte { margin-bottom: 18px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px; }
-      .badge-etiqueta { background: #f1f5f9; color: #2563eb; border-radius: 4px; font-size: 0.95em; padding: 2px 8px; margin-left: 4px; }
+      @media print {
+        body { margin: 0; padding: 20px; }
+        .page-break { page-break-before: always; }
+      }
+      
+      body { 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        margin: 0; 
+        padding: 40px; 
+        color: #1f2937; 
+        background: #ffffff;
+        line-height: 1.6;
+      }
+      
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      
+      h1 { 
+        color: #1f2937; 
+        font-size: 2.5em;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        letter-spacing: -0.025em;
+      }
+      
+      .subtitle {
+        color: #6b7280;
+        font-size: 1.1em;
+        font-weight: 400;
+        margin: 0;
+      }
+      
+      .recorte { 
+        margin-bottom: 32px; 
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fafafa;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      
+      .recorte h2 { 
+        color: #2563eb; 
+        font-size: 1.4em;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      
+      .field {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+      }
+      
+      .field-label {
+        font-weight: 600;
+        color: #374151;
+        min-width: 80px;
+        margin-right: 12px;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      
+      .field-content {
+        flex: 1;
+        color: #1f2937;
+        word-wrap: break-word;
+      }
+      
+      .field-content a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+      
+      .field-content a:hover {
+        text-decoration: underline;
+      }
+      
+      .badge-etiqueta { 
+        background: #dbeafe; 
+        color: #1e40af; 
+        border-radius: 6px; 
+        font-size: 0.85em; 
+        padding: 4px 10px; 
+        margin-left: 8px;
+        font-weight: 500;
+        display: inline-block;
+      }
+      
+      .metadata {
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid #e5e7eb;
+        font-size: 0.85em;
+        color: #6b7280;
+      }
+      
+      .metadata .field {
+        margin-bottom: 6px;
+      }
+      
+      .metadata .field-label {
+        min-width: 60px;
+        font-size: 0.8em;
+      }
     </style></head><body>`;
-    html += `<h1>${i18n[lang].recortesGuardados}</h1>`;
+    
+    // Header con título y fecha de exportación
+    const fechaExportacion = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+    
+    // Texto del subtítulo según el idioma
+    const subtitleText = {
+      es: `${recortes.length} ${recortes.length === 1 ? 'recorte' : 'recortes'} • Exportado el ${fechaExportacion}`,
+      en: `${recortes.length} ${recortes.length === 1 ? 'snippet' : 'snippets'} • Exported on ${fechaExportacion}`,
+      it: `${recortes.length} ${recortes.length === 1 ? 'ritaglio' : 'ritagli'} • Esportato il ${fechaExportacion}`,
+      fr: `${recortes.length} ${recortes.length === 1 ? 'extrait' : 'extraits'} • Exporté le ${fechaExportacion}`,
+      de: `${recortes.length} ${recortes.length === 1 ? 'Ausschnitt' : 'Ausschnitte'} • Exportiert am ${fechaExportacion}`
+    };
+    
+    html += `
+      <div class="header">
+        <h1>${i18n[lang].recortesGuardados}</h1>
+        <p class="subtitle">${subtitleText[lang] || subtitleText.en}</p>
+      </div>
+    `;
+    
+    // Contenido de los recortes
     recortes.forEach((r, i) => {
-      html += `<div class='recorte'><h2>${i18n[lang].recorte(i+1)}</h2>`;
-      html += `<div><b>${i18n[lang].texto}:</b> ${r.texto}</div>`;
-      if (r.nota) html += `<div><b>${i18n[lang].nota}:</b> ${r.nota}</div>`;
-      html += `<div><b>${i18n[lang].url}:</b> <a href='${r.url}'>${r.url}</a></div>`;
-      if (r.etiqueta) html += `<span class='badge-etiqueta'>${i18n[lang].etiqueta}: ${r.etiqueta}</span>`;
-      html += `<div><b>${i18n[lang].fecha}:</b> ${nuevaFecha(r.fecha)}</div></div>`;
+      html += `<div class='recorte'>`;
+      html += `<h2>${i18n[lang].recorte(i+1)}</h2>`;
+      
+      // Título primero (si existe)
+      if (r.nota) {
+        html += `<div class='field'><span class='field-label'>${i18n[lang].nota}:</span><span class='field-content'>${r.nota}</span></div>`;
+      }
+      
+      // Luego el texto
+      html += `<div class='field'><span class='field-label'>${i18n[lang].texto}:</span><span class='field-content'>${r.texto}</span></div>`;
+      
+      // URL
+      html += `<div class='field'><span class='field-label'>${i18n[lang].url}:</span><span class='field-content'><a href='${r.url}'>${r.url}</a></span></div>`;
+      
+      // Metadata (etiqueta y fecha)
+      html += `<div class='metadata'>`;
+      if (r.etiqueta) {
+        html += `<div class='field'><span class='field-label'>${i18n[lang].etiqueta}:</span><span class='field-content'><span class='badge-etiqueta'>${r.etiqueta}</span></span></div>`;
+      }
+      html += `<div class='field'><span class='field-label'>${i18n[lang].fecha}:</span><span class='field-content'>${nuevaFecha(r.fecha)}</span></div>`;
+      html += `</div>`;
+      
+      html += `</div>`;
     });
+    
     html += '</body></html>';
+    
     const win = window.open('', '_blank');
     win.document.write(html);
     win.document.close();
@@ -499,6 +666,8 @@ document.addEventListener('DOMContentLoaded', () => {
   donacionBtnFinal.addEventListener('click', () => {
     window.open('https://coff.ee/freeextensions', '_blank');
   });
+
+
 
   // --- Botón eliminar todo ---
   eliminarTodoBtn.addEventListener('click', () => {
@@ -513,6 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   cargarRecortesYTotal();
 
+  // --- Alternar pin de recorte ---
   function alternarPinRecorte(idx) {
     chrome.storage.local.get({recortes: []}, data => {
       const recortes = data.recortes;
@@ -533,16 +703,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Compartir recorte ---
   function compartirRecorte(recorte) {
     // Solo compartir el texto del snippet, sin etiquetas ni URL
     let texto = recorte.texto;
     if (recorte.nota) texto += `\n\n📝 ${recorte.nota}`;
-
+    
     const urlWhatsapp = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     const urlGmail = `https://mail.google.com/mail/?view=cm&fs=1&body=${encodeURIComponent(texto)}`;
     const urlTelegram = `https://t.me/share/url?url=${encodeURIComponent(recorte.url)}&text=${encodeURIComponent(texto)}`;
     const urlX = `https://twitter.com/intent/tweet?text=${encodeURIComponent(recorte.texto.substring(0, 280))}`;
-
+    
     const menu = document.createElement('div');
     menu.className = 'menu-compartir';
     menu.innerHTML = `
@@ -589,6 +760,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 0);
   }
 
+  // --- Mostrar confirmación de eliminación ---
   function mostrarConfirmacionEliminar(idx) {
     // Si ya hay un popup, no crear otro
     if (document.querySelector('.popup-confirmar-eliminar')) return;
@@ -611,6 +783,7 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.querySelector('.btn-cancelar').onclick = () => {
       overlay.remove();
     };
+    // Cerrar con ESC
     function handleKey(e) {
       if (e.key === 'Escape') {
         overlay.remove();
@@ -620,6 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleKey);
   }
 
+  // --- Mostrar confirmación de eliminar todo ---
   function mostrarConfirmacionEliminarTodo() {
     // Si ya hay un popup, no crear otro
     if (document.querySelector('.popup-confirmar-eliminar')) return;
@@ -642,6 +816,7 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.querySelector('.btn-cancelar').onclick = () => {
       overlay.remove();
     };
+    // Cerrar con ESC
     function handleKey(e) {
       if (e.key === 'Escape') {
         overlay.remove();
@@ -651,10 +826,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleKey);
   }
 
+  // --- Eliminar todos los recortes ---
   function eliminarTodosLosRecortes() {
     recortes = [];
     chrome.storage.local.set({recortes: [], totalSaved: 0}, () => {
       cargarRecortesYTotal();
     });
   }
+
+
 });

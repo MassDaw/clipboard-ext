@@ -1,0 +1,190 @@
+{
+  "extName": {
+    "message": "ZenMarker",
+    "description": "Name der Erweiterung"
+  },
+  "extDescription": {
+    "message": "Speichern Sie ausgewählte Textausschnitte von jeder Webseite mit einer optionalen Notiz.",
+    "description": "Beschreibung der Erweiterung"
+  },
+  "contextMenuSaveSnippet": {
+    "message": "Ausschnitt speichern",
+    "description": "Kontextmenü-Element zum Speichern des ausgewählten Texts"
+  },
+  "popupTitle": {
+    "message": "Ausschnitte",
+    "description": "Haupttitel des Popups"
+  },
+  "totalSnippets": {
+    "message": "Sie haben %d Ausschnitte gespeichert",
+    "description": "Gesamtzähler der Ausschnitte mit Platzhalter"
+  },
+  "searchPlaceholder": {
+    "message": "Suchen…",
+    "description": "Platzhalter des Suchfelds"
+  },
+  "noSnippets": {
+    "message": "Keine Ausschnitte gespeichert.",
+    "description": "Nachricht wenn keine Ausschnitte vorhanden sind"
+  },
+  "allTags": {
+    "message": "Alle Tags",
+    "description": "Filteroption für alle Tags"
+  },
+  "exportPdf": {
+    "message": "Als PDF exportieren 🖨️",
+    "description": "Button zum Exportieren als PDF"
+  },
+  "copySnippet": {
+    "message": "Ausschnitt kopieren",
+    "description": "Button zum Kopieren des Ausschnitts"
+  },
+  "copied": {
+    "message": "Kopiert",
+    "description": "Bestätigungsnachricht für Kopieren"
+  },
+  "delete": {
+    "message": "Löschen",
+    "description": "Löschen-Button"
+  },
+  "goToPage": {
+    "message": "Zur Seite gehen",
+    "description": "Button zum Navigieren zur Seite"
+  },
+  "text": {
+    "message": "Text",
+    "description": "Text-Etikett"
+  },
+  "note": {
+    "message": "Notiz",
+    "description": "Notiz-Etikett"
+  },
+  "url": {
+    "message": "URL",
+    "description": "URL-Etikett"
+  },
+  "tag": {
+    "message": "Tag",
+    "description": "Tag-Etikett"
+  },
+  "date": {
+    "message": "Datum",
+    "description": "Datum-Etikett"
+  },
+  "snippetNumber": {
+    "message": "Ausschnitt %d",
+    "description": "Ausschnitt-Nummer mit Platzhalter"
+  },
+  "savedSnippets": {
+    "message": "Gespeicherte Ausschnitte",
+    "description": "Titel der gespeicherten Ausschnitte"
+  },
+  "donationMessage": {
+    "message": "War diese Erweiterung nützlich für Sie? Kaufen Sie mir einen Kaffee! ☕",
+    "description": "Spenden-Nachricht"
+  },
+  "pin": {
+    "message": "Anheften",
+    "description": "Anheften-Button"
+  },
+  "unpin": {
+    "message": "Lösen",
+    "description": "Lösen-Button"
+  },
+  "share": {
+    "message": "Teilen",
+    "description": "Teilen-Button"
+  },
+  "shareWhatsApp": {
+    "message": "Über WhatsApp teilen",
+    "description": "Option zum Teilen über WhatsApp"
+  },
+  "shareGmail": {
+    "message": "Über Gmail teilen",
+    "description": "Option zum Teilen über Gmail"
+  },
+  "shareTelegram": {
+    "message": "Über Telegram teilen",
+    "description": "Option zum Teilen über Telegram"
+  },
+  "confirmDelete": {
+    "message": "Sind Sie sicher, dass Sie diesen Ausschnitt löschen möchten?",
+    "description": "Lösch-Bestätigungsnachricht"
+  },
+  "confirm": {
+    "message": "Löschen",
+    "description": "Bestätigen-Button"
+  },
+  "cancel": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button"
+  },
+  "sortByDate": {
+    "message": "Nach Datum sortieren",
+    "description": "Button zum Sortieren nach Datum"
+  },
+  "deleteAll": {
+    "message": "Alles löschen",
+    "description": "Alles löschen-Button"
+  },
+  "confirmDeleteAll": {
+    "message": "Sind Sie sicher, dass Sie alle Ausschnitte löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "description": "Bestätigungsnachricht für alles löschen"
+  },
+  "themeToggle": {
+    "message": "Hell/Dunkel-Modus umschalten",
+    "description": "Aria-label des Theme-Umschalt-Buttons"
+  },
+  "languageSelect": {
+    "message": "Sprache auswählen",
+    "description": "Aria-label des Sprachauswahl-Buttons"
+  },
+  "searchSnippets": {
+    "message": "Ausschnitte suchen",
+    "description": "Aria-label des Suchfelds"
+  },
+  "buyMeCoffee": {
+    "message": "Kaufen Sie mir einen Kaffee",
+    "description": "Kaufen Sie mir einen Kaffee-Button"
+  },
+  "buyMeCoffeeTitle": {
+    "message": "Kaufen Sie mir einen Kaffee",
+    "description": "Titel des Kaufen Sie mir einen Kaffee-Buttons"
+  },
+  "notePrompt": {
+    "message": "Titel hinzufügen (optional):",
+    "description": "Prompt für Titel-Eingabe"
+  },
+  "tagPrompt": {
+    "message": "Tag hinzufügen (optional):",
+    "description": "Prompt für Tag-Eingabe"
+  },
+  "saveButton": {
+    "message": "Speichern",
+    "description": "Speichern-Button"
+  },
+  "cancelButton": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button"
+  },
+  "justNow": {
+    "message": "Gerade eben",
+    "description": "Zeitindikator für gerade eben"
+  },
+  "minutesAgo": {
+    "message": "Vor %d Minuten",
+    "description": "Zeitindikator für vor Minuten"
+  },
+  "hoursAgo": {
+    "message": "Vor %d Stunden",
+    "description": "Zeitindikator für vor Stunden"
+  },
+  "daysAgo": {
+    "message": "Vor %d Tagen",
+    "description": "Zeitindikator für vor Tagen"
+  },
+  "keyboardShortcutDescription": {
+    "message": "Ausgewählten Text als Ausschnitt speichern",
+    "description": "Beschreibung für Tastenkombinationsbefehl"
+  }
+} 

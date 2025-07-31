@@ -7,6 +7,7 @@ Perfect for students, researchers, content creators, developers, or anyone who c
 ## 🚀 Key Features
 
 ✅ **Save selected text from any website** via right-click context menu  
+📄 **Works with PDFs, forms, and documents** - not just web pages  
 🗒️ **Add notes and tags** to each saved snippet for better organization  
 🔍 **Search and filter snippets** by keyword, note, tag, or URL  
 📁 **Export all your snippets** to a clean, formatted PDF with one click  
@@ -53,6 +54,9 @@ Whether you're collecting quotes, research notes, client feedback, code snippets
 - Preserves formatting and line breaks
 - Removes unnecessary HTML tags while keeping structure
 - Handles complex web content gracefully
+- **Works with PDFs** - extracts text from PDF documents opened in browser
+- **Works with forms** - captures text from input fields and textareas
+- **Works with documents** - handles various document types and formats
 
 ### 🏷️ Organization Tools
 - Add custom notes to each snippet

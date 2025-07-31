@@ -1,53 +1,106 @@
-# Recortes con Notas
+# ZenMarker - Chrome Extension
 
-Extensión de Chrome para guardar recortes de texto seleccionados en cualquier página web, añadirles notas y etiquetas, y gestionarlos fácilmente desde un popup. Incluye búsqueda, filtrado, exportación a PDF, modo oscuro, múltiples idiomas y opción de donación.
+A Chrome extension for saving text snippets from any website with optional notes and tags.
 
-## Características
+## 🌍 Internationalization (i18n)
 
-- Guarda texto seleccionado en cualquier página web con clic derecho.
-- Añade una **nota** y una **etiqueta** opcional a cada recorte.
-- Visualiza, busca y filtra recortes desde el popup de la extensión.
-- Filtrado por palabra clave (texto, nota, URL, etiqueta) y por etiqueta específica.
-- Exporta todos los recortes a un archivo **PDF** con un solo clic.
-- Copia cualquier recorte completo al portapapeles.
-- **Pinea** tus recortes favoritos para mantenerlos siempre arriba.
-- Comparte recortes fácilmente por **WhatsApp**, **Gmail** o **Telegram** desde el menú de compartir.
-- Confirmación visual antes de eliminar un recorte.
-- **Eliminar todos los recortes** de una vez con confirmación de seguridad.
-- Interfaz moderna con nuevos iconos SVG para todas las acciones (copiar, compartir, borrar, pin, web).
-- Modo claro y oscuro con toggle y preferencia recordada.
-- Contador de recortes guardados (no disminuye al eliminar).
-- Botón de donación “Buy Me a Coffee” al final del popup.
+This extension now properly implements Chrome's i18n API following the official guidelines. The internationalization system includes:
 
-## Instalación
+### Supported Languages
+- **English** (en) - Default
+- **Spanish** (es)
+- **Italian** (it)
+- **French** (fr)
+- **German** (de)
 
-1. Descarga o clona este repositorio.
-2. Ve a `chrome://extensions/` en tu navegador Chrome.
-3. Activa el **Modo de desarrollador** (arriba a la derecha).
-4. Haz clic en **Cargar descomprimida** y selecciona la carpeta del proyecto.
-5. ¡Listo! Verás el icono de la extensión en la barra de Chrome.
+### Implementation Details
 
-## Uso
+The extension uses Chrome's built-in `chrome.i18n` API for proper internationalization:
 
-1. Selecciona cualquier texto en una página web.
-2. Haz clic derecho y elige **Guardar recorte**.
-3. Ingresa una nota y una etiqueta (ambas opcionales) en los prompts.
-4. Abre el popup de la extensión para ver, buscar, filtrar, copiar, compartir, pinnear o exportar tus recortes.
-5. Cambia entre modo claro y oscuro con el botón 🌙/☀️.
-6. Exporta todos los recortes a PDF con el botón **Exportar a PDF 🖨️**.
-7. Si te resulta útil, ¡invítame un café desde el botón al final del popup!
+1. **Message Files**: Each language has its own `messages.json` file in `_locales/[language_code]/`
+2. **Manifest Integration**: The manifest.json uses `__MSG_extName__` and `__MSG_extDescription__` for localized strings
+3. **JavaScript Integration**: All UI strings are retrieved using `chrome.i18n.getMessage()`
+4. **Default Locale**: Set to "en" in manifest.json
 
-## Créditos
+### File Structure
+```
+_locales/
+├── en/messages.json
+├── es/messages.json
+├── it/messages.json
+├── fr/messages.json
+└── de/messages.json
+```
 
-Desarrollado por Max.
+### Usage in Code
+
+```javascript
+// Get a localized message
+const message = chrome.i18n.getMessage('popupTitle');
+
+// Get a message with substitutions
+const totalMessage = chrome.i18n.getMessage('totalSnippets', [count.toString()]);
+```
+
+## Features
+
+- ✅ Save selected text from any website
+- ⌨️ Keyboard shortcut (Alt+Shift+S) for quick saving
+- 📄 Works with PDFs, forms, and documents
+- 🗒️ Add notes and tags to snippets
+- 🔍 Search and filter snippets
+- 📁 Export to PDF
+- 📋 Copy snippets to clipboard
+- 🌓 Dark and light mode
+- 🔢 Snippet counter
+- ☕ Support the developer
+- 🌍 Multilingual UI (5 languages)
+- 🔐 100% private - local storage only
+
+## Installation
+
+1. Download or clone this repository
+2. Go to `chrome://extensions/` in your Chrome browser
+3. Enable **Developer mode** (top right)
+4. Click **Load unpacked** and select the project folder
+5. Done! You'll see the extension icon in your Chrome toolbar
+
+## Usage
+
+1. **Select any text** on a web page
+2. **Right-click and choose** "Save snippet" **OR** press **Alt+Shift+S**
+3. **Add a note and tag** (both optional) in the prompts
+4. **Open the extension popup** to view, search, filter, copy, share, pin, or export your snippets
+5. **Switch between themes** with the 🌙/☀️ button
+6. **Export to PDF** with the **Export to PDF 🖨️** button
+7. **Delete all snippets** with the "Delete all" button (with confirmation)
+8. **Support the developer** with the coffee button at the bottom!
+
+## Technical Details
+
+- **Storage**: Local browser storage (Chrome Storage API)
+- **Privacy**: No data collection, tracking, or external servers
+- **Performance**: Lightweight and fast
+- **Compatibility**: Chrome, Edge, and other Chromium-based browsers
+- **Languages**: JavaScript, HTML, CSS
+- **Icons**: Custom SVG icons for all actions
+- **i18n**: Chrome's official i18n API
+
+## Contributing
+
+Feel free to submit issues, feature requests, or pull requests. This is an open-source project and contributions are welcome!
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Support
+
+If this extension has been useful to you, consider buying me a coffee! ☕
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%F0%9F%8D%94-yellow?style=for-the-badge)](https://coff.ee/freeextensions)
 
 ---
 
-¿Te ha sido útil esta extensión? ¡Invítame un café! ☕ 
-
-[![Invítame un café](https://img.shields.io/badge/Inv%C3%ADtame%20un%20caf%C3%A9-%F0%9F%8D%94-yellow?style=for-the-badge)](https://coff.ee/freeextensions)
-
-## Política de privacidad
-
-Esta extensión no recoge ni comparte datos personales. Todo se guarda localmente en tu navegador.
+**Made with ❤️ for the productivity community**
 

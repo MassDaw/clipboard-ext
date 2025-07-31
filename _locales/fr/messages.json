@@ -1,0 +1,190 @@
+{
+  "extName": {
+    "message": "ZenMarker",
+    "description": "Nom de l'extension"
+  },
+  "extDescription": {
+    "message": "Sauvegardez des extraits de texte sélectionnés sur n'importe quelle page web avec une note optionnelle.",
+    "description": "Description de l'extension"
+  },
+  "contextMenuSaveSnippet": {
+    "message": "Sauvegarder l'extrait",
+    "description": "Élément du menu contextuel pour sauvegarder le texte sélectionné"
+  },
+  "popupTitle": {
+    "message": "Extraits",
+    "description": "Titre principal du popup"
+  },
+  "totalSnippets": {
+    "message": "Vous avez sauvegardé %d extraits",
+    "description": "Compteur total des extraits avec espace réservé"
+  },
+  "searchPlaceholder": {
+    "message": "Rechercher…",
+    "description": "Espace réservé du champ de recherche"
+  },
+  "noSnippets": {
+    "message": "Aucun extrait sauvegardé.",
+    "description": "Message quand il n'y a pas d'extraits"
+  },
+  "allTags": {
+    "message": "Toutes les étiquettes",
+    "description": "Option de filtre pour toutes les étiquettes"
+  },
+  "exportPdf": {
+    "message": "Exporter en PDF 🖨️",
+    "description": "Bouton pour exporter en PDF"
+  },
+  "copySnippet": {
+    "message": "Copier l'extrait",
+    "description": "Bouton pour copier l'extrait"
+  },
+  "copied": {
+    "message": "Copié",
+    "description": "Message de confirmation de copie"
+  },
+  "delete": {
+    "message": "Supprimer",
+    "description": "Bouton supprimer"
+  },
+  "goToPage": {
+    "message": "Aller à la page",
+    "description": "Bouton pour aller à la page"
+  },
+  "text": {
+    "message": "Texte",
+    "description": "Étiquette texte"
+  },
+  "note": {
+    "message": "Note",
+    "description": "Étiquette note"
+  },
+  "url": {
+    "message": "URL",
+    "description": "Étiquette URL"
+  },
+  "tag": {
+    "message": "Étiquette",
+    "description": "Étiquette étiquette"
+  },
+  "date": {
+    "message": "Date",
+    "description": "Étiquette date"
+  },
+  "snippetNumber": {
+    "message": "Extrait %d",
+    "description": "Numéro d'extrait avec espace réservé"
+  },
+  "savedSnippets": {
+    "message": "Extraits sauvegardés",
+    "description": "Titre des extraits sauvegardés"
+  },
+  "donationMessage": {
+    "message": "Cette extension vous a-t-elle été utile ? Offrez-moi un café ! ☕",
+    "description": "Message de don"
+  },
+  "pin": {
+    "message": "Épingler",
+    "description": "Bouton épingler"
+  },
+  "unpin": {
+    "message": "Désépingler",
+    "description": "Bouton désépingler"
+  },
+  "share": {
+    "message": "Partager",
+    "description": "Bouton partager"
+  },
+  "shareWhatsApp": {
+    "message": "Partager via WhatsApp",
+    "description": "Option pour partager via WhatsApp"
+  },
+  "shareGmail": {
+    "message": "Partager via Gmail",
+    "description": "Option pour partager via Gmail"
+  },
+  "shareTelegram": {
+    "message": "Partager via Telegram",
+    "description": "Option pour partager via Telegram"
+  },
+  "confirmDelete": {
+    "message": "Êtes-vous sûr de vouloir supprimer cet extrait ?",
+    "description": "Message de confirmation de suppression"
+  },
+  "confirm": {
+    "message": "Supprimer",
+    "description": "Bouton confirmer"
+  },
+  "cancel": {
+    "message": "Annuler",
+    "description": "Bouton annuler"
+  },
+  "sortByDate": {
+    "message": "Trier par date",
+    "description": "Bouton pour trier par date"
+  },
+  "deleteAll": {
+    "message": "Tout supprimer",
+    "description": "Bouton tout supprimer"
+  },
+  "confirmDeleteAll": {
+    "message": "Êtes-vous sûr de vouloir supprimer tous les extraits ? Cette action ne peut pas être annulée.",
+    "description": "Message de confirmation pour tout supprimer"
+  },
+  "themeToggle": {
+    "message": "Basculer mode clair/sombre",
+    "description": "Aria-label du bouton de changement de thème"
+  },
+  "languageSelect": {
+    "message": "Sélectionner la langue",
+    "description": "Aria-label du sélecteur de langue"
+  },
+  "searchSnippets": {
+    "message": "Rechercher des extraits",
+    "description": "Aria-label du champ de recherche"
+  },
+  "buyMeCoffee": {
+    "message": "Offrez-moi un café",
+    "description": "Bouton offrez-moi un café"
+  },
+  "buyMeCoffeeTitle": {
+    "message": "Offrez-moi un café",
+    "description": "Titre du bouton offrez-moi un café"
+  },
+  "notePrompt": {
+    "message": "Ajouter un titre (optionnel) :",
+    "description": "Invite pour saisie de titre"
+  },
+  "tagPrompt": {
+    "message": "Ajouter une étiquette (optionnel) :",
+    "description": "Invite pour saisie d'étiquette"
+  },
+  "saveButton": {
+    "message": "Sauvegarder",
+    "description": "Bouton sauvegarder"
+  },
+  "cancelButton": {
+    "message": "Annuler",
+    "description": "Bouton annuler"
+  },
+  "justNow": {
+    "message": "À l'instant",
+    "description": "Indicateur de temps pour à l'instant"
+  },
+  "minutesAgo": {
+    "message": "Il y a %d minutes",
+    "description": "Indicateur de temps pour il y a des minutes"
+  },
+  "hoursAgo": {
+    "message": "Il y a %d heures",
+    "description": "Indicateur de temps pour il y a des heures"
+  },
+  "daysAgo": {
+    "message": "Il y a %d jours",
+    "description": "Indicateur de temps pour il y a des jours"
+  },
+  "keyboardShortcutDescription": {
+    "message": "Enregistrer le texte sélectionné comme extrait",
+    "description": "Description pour la commande de raccourci clavier"
+  }
+} 
